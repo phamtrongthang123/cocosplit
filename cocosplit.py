@@ -34,12 +34,12 @@ def main(args):
         categories = coco['categories']
 
         number_of_images = len(images)
-        print(number_of_images)
+#         print(number_of_images)
         images_with_annotations = funcy.lmap(lambda a: a['image_id'], annotations)
-        print(images_with_annotations)
+#         print(images_with_annotations)
         if args.having_annotations:
             images = funcy.lremove(lambda i: i['id'] not in images_with_annotations, images)
-        print(images)
+#         print(images)
         x, y = train_test_split(images, train_size=args.split)
 
         save_coco(args.train,  x, filter_annotations(annotations, x), categories)
